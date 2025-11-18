@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "ae345df2-f034-4f38-ac2d-a82d52b89f6d",
+		"name": "Users",
+		"description": "**Users:** expone los recursos para gestionar la consulta del perfil del usuario.\n\nCodigo de respuesta de los recursos.\n\n| **Httpcode** | Internal code | **Description** | **Verbo** | **Capa** |\n| --- | --- | --- | --- | --- |\n| 200 | 200 | Sucess | GET |  |\n| 403 | 403 | Token not sent | GET | Controllers |",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5061103",
+		"_collection_link": "https://lezaminus.postman.co/workspace/Inventory~2ecb4e2a-f7d0-4bc4-b5c5-fb1725fae019/collection/5061103-ae345df2-f034-4f38-ac2d-a82d52b89f6d?action=share&source=collection_link&creator=5061103"
+	},
+	"item": [
+		{
+			"name": "01 - Show profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/me",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				},
+				"description": "Este recurso permite consultar los datos del usuario logueado, mediante el token.\n\n| **httpcode** | **code** | **desciption** |\n| --- | --- | --- |\n| 200 | 200 | success |\n| 403 | 403 | token not sent |"
+			},
+			"response": [
+				{
+					"name": "01 - Ok - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Nov 2025 02:49:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"name\": \"John Rivas\",\n    \"email\": \"john@correo.com\"\n}"
+				},
+				{
+					"name": "02 - Error - Token not sent",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Nov 2025 02:43:58 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "161639b0-e9b0-47d1-81f6-88b65334a655",
+		"name": "Auth",
+		"description": "**Auth:** expone los recursos para gestionar el registro y autenticacion. No es necesaria la activacion del usuario, una vez registrado el usuario puede hacer login con el email y la contraseña ingresados.\n\nCodigo de respuesta de los recursos.\n\n| **Httpcode** | Internal code | **Description** | **Verbo** | **Capa** |\n| --- | --- | --- | --- | --- |\n| 200 | 200 | Sucess | POST |  |\n| 400 | 400 | Duplicated email | POST | Service |\n| 500 | 500 | Internal Error | POST | Controllers |",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5061103",
+		"_collection_link": "https://lezaminus.postman.co/workspace/Inventory~2ecb4e2a-f7d0-4bc4-b5c5-fb1725fae019/collection/5061103-161639b0-e9b0-47d1-81f6-88b65334a655?action=share&source=collection_link&creator=5061103"
+	},
+	"item": [
+		{
+			"name": "01 - Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Rivas\",\r\n    \"email\": \"john@correo.com\",\r\n    \"password\": \"secret\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				},
+				"description": "Este recurso permite crear un usuario en el sistema de inventario\n\n#### **Request body**\n\n- name | required\n    \n- email | required | unique\n    \n- password | required\n    \n\n| **httpcode** | **code** | **description** |\n| --- | --- | --- |\n| 200 | 200 | Created sucessfully |\n| 400 | 400 | Duplicated email |\n| 500 | 500 | Internal error |"
+			},
+			"response": [
+				{
+					"name": "01 - Ok - Register successfully",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Rivas\",\r\n    \"email\": \"john@correo.com\",\r\n    \"password\": \"secret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Nov 2025 01:46:12 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"name\": \"John Rivas\",\n    \"email\": \"john@correo.com\"\n}"
+				},
+				{
+					"name": "02 - Error - Duplicate email",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jose Rivas\",\r\n    \"email\": \"john@correo.com\",\r\n    \"password\": \"secret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Nov 2025 01:51:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"El correo que ya se encuentra registrado\",\n    \"code\": \"400\"\n}"
+				},
+				{
+					"name": "03 - Error - Internal error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Manuel Rojas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Nov 2025 01:53:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"rawPassword cannot be null\",\n    \"code\": \"500\"\n}"
+				}
+			]
+		},
+		{
+			"name": "02 - Login user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Obtiene el cuerpo de la respuesta como un objeto JSON\r",
+							"const responseJson = pm.response.json();\r",
+							"// Extrae el valor del token del objeto JSON y guárdalo en la variable 'token'\r",
+							"var token = responseJson.token;\r",
+							"// Guarda la variable en el entorno de Postman con el nombre 'bearerToken'\r",
+							"pm.environment.set(\"bearerToken\", token);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"john@correo.com\",\r\n    \"password\": \"secret\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "Este recurso permite autenticarse en el sistema con un usuario existente\n\n#### **Request body**\n\n- email | required\n    \n- password | required\n    \n\n| **httpcode** | **code** | **description** |\n| --- | --- | --- |\n| 200 | 200 | Login success |\n|  |  |  |\n| 500 | 500 | Internal error |"
+			},
+			"response": [
+				{
+					"name": "01 - Ok - Login successfully",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@correo.com\",\r\n    \"password\": \"secret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Nov 2025 02:28:00 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSm9obiBSaXZhcyIsInN1YiI6ImpvaG5AY29ycmVvLmNvbSIsImlhdCI6MTc2MzQzMjg4MCwiZXhwIjoxNzYzNDM2NDgwfQ.j0W86CEN6axKPKCaB-vrtiRVz_fdDT7gLS-XpTSD4V0\"\n}"
+				},
+				{
+					"name": "02 - Error - Internal error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@correo.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Nov 2025 02:40:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Bad credentials\",\n    \"code\": \"500\"\n}"
+				}
+			]
+		}
+	]
+}
